@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>나나컴퍼니</title>
+<meta name="description" content="나나컴퍼니는 공인중개사·주택관리사 수험생을 위한 암기법 학습 콘텐츠 브랜드 노란스킬을 운영하고, Claude 기반 자동화로 콘텐츠를 만듭니다.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+  :root{
+    --ink:#1F2B3D;
+    --ink-soft:#56627A;
+    --paper:#FFFFFF;
+    --rule:#DCE6F2;
+    --margin:#F0A097;
+    --yellow:#FFC629;
+    --yellow-soft:#FFF3C7;
+    --line:56px;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Pretendard",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    font-size:17px;
+    line-height:1.7;
+    word-break:keep-all;
+  }
+  a{color:inherit}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--ink);outline-offset:3px;border-radius:4px}
+
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+  /* header */
+  header{border-bottom:1px solid var(--rule)}
+  header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{font-weight:800;font-size:19px;letter-spacing:-0.02em;text-decoration:none;display:flex;align-items:center;gap:8px}
+  .logo i{width:12px;height:12px;border-radius:50%;background:var(--yellow);display:inline-block;box-shadow:10px 0 0 var(--ink)}
+  .logo span{margin-left:10px}
+  header nav a{font-size:15px;color:var(--ink-soft);text-decoration:none}
+  header nav a:hover{color:var(--ink);text-decoration:underline}
+
+  /* hero on ruled notebook paper */
+  .hero{
+    position:relative;
+    background-image:repeating-linear-gradient(to bottom,transparent 0,transparent calc(var(--line) - 1px),var(--rule) calc(var(--line) - 1px),var(--rule) var(--line));
+    background-position:0 20px;
+    padding:56px 0 80px;
+    overflow:hidden;
+  }
+  .hero::before{content:"";position:absolute;top:0;bottom:0;left:max(24px,calc(50% - 540px + 0px));width:2px;background:var(--margin);opacity:.7}
+  .hero .wrap{display:grid;grid-template-columns:1.25fr 1fr;gap:56px;align-items:center;padding-left:56px}
+  h1{
+    font-size:clamp(36px,5.4vw,60px);
+    line-height:1.25;
+    letter-spacing:-0.035em;
+    font-weight:800;
+    margin:0 0 24px;
+  }
+  .lede{font-size:clamp(17px,1.7vw,19px);color:var(--ink-soft);max-width:30em;margin:0 0 32px}
+  .cta{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:#fff;text-decoration:none;font-weight:700;padding:14px 22px;border-radius:999px;font-size:16px}
+  .cta:hover{background:#2E3E57}
+
+  /* OX card */
+  .card{
+    background:#fff;
+    border:2px solid var(--ink);
+    border-radius:18px;
+    padding:28px 28px 24px;
+    box-shadow:8px 8px 0 var(--yellow);
+    transform:rotate(1.5deg);
+    max-width:400px;
+    justify-self:end;
+  }
+  .card .tag{display:inline-block;font-size:13px;font-weight:700;background:var(--yellow-soft);padding:3px 10px;border-radius:999px;margin-bottom:14px}
+  .card p.q{font-size:20px;font-weight:700;line-height:1.5;margin:0 0 22px;letter-spacing:-0.02em}
+  .ox{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .ox button{
+    font:inherit;font-size:30px;font-weight:800;
+    height:72px;border-radius:14px;border:2px solid var(--ink);background:#fff;color:var(--ink);cursor:pointer;
+    transition:background .15s ease, transform .15s ease;
+  }
+  .ox button:hover{background:var(--yellow-soft)}
+  .ox button:active{transform:translateY(2px)}
+  .ox button[aria-pressed="true"]{background:var(--yellow)}
+  .answer{min-height:52px;margin-top:16px;font-size:16px;color:var(--ink-soft)}
+  .answer strong{color:var(--ink)}
+
+  /* sections */
+  section{padding:88px 0}
+  h2{font-size:clamp(26px,3vw,34px);letter-spacing:-0.03em;line-height:1.35;margin:0 0 16px;font-weight:800}
+  .section-intro{color:var(--ink-soft);max-width:36em;margin:0 0 48px}
+
+  .work{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:2px solid var(--ink)}
+  .work article{padding:28px 28px 8px 0}
+  .work article + article{padding-left:28px;border-left:1px solid var(--rule)}
+  .work h3{font-size:20px;margin:0 0 10px;letter-spacing:-0.02em}
+  .work h3 small{display:block;font-size:14px;font-weight:600;color:var(--ink-soft);margin-top:4px;letter-spacing:0}
+  .work p{margin:0;color:var(--ink-soft);font-size:16px}
+
+  .claude{background:var(--yellow-soft)}
+  .claude .wrap{display:grid;grid-template-columns:1fr 1.2fr;gap:56px;align-items:start}
+  .claude ul{list-style:none;margin:0;padding:0}
+  .claude li{padding:18px 0;border-bottom:1px solid rgba(31,43,61,.15)}
+  .claude li:first-child{padding-top:0}
+  .claude li b{display:block;font-size:18px;margin-bottom:4px}
+  .claude li span{color:var(--ink-soft);font-size:16px}
+
+  .info dl{display:grid;grid-template-columns:140px 1fr;margin:0;border-top:2px solid var(--ink)}
+  .info dt,.info dd{margin:0;padding:16px 0;border-bottom:1px solid var(--rule)}
+  .info dt{color:var(--ink-soft);font-size:15px}
+  .info dd{font-weight:600}
+  .info dd a{text-decoration-color:var(--yellow);text-decoration-thickness:3px;text-underline-offset:4px}
+
+  footer{border-top:1px solid var(--rule);padding:28px 0;color:var(--ink-soft);font-size:14px}
+
+  @media (max-width:860px){
+    .hero{padding:40px 0 64px}
+    .hero::before{left:16px}
+    .hero .wrap{grid-template-columns:1fr;gap:44px;padding-left:36px}
+    .card{justify-self:start;transform:rotate(-1deg)}
+    .work{grid-template-columns:1fr}
+    .work article,.work article + article{padding:24px 0;border-left:0;border-bottom:1px solid var(--rule)}
+    .claude .wrap{grid-template-columns:1fr;gap:28px}
+    section{padding:64px 0}
+  }
+  @media (max-width:480px){
+    .wrap{padding:0 16px}
+    .hero .wrap{padding-left:30px}
+    .info dl{grid-template-columns:96px 1fr}
+    header nav{display:none}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none!important}
+    .card{transform:none}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="나나컴퍼니 홈"><i aria-hidden="true"></i><span>나나컴퍼니</span></a>
+    <nav><a href="mailto:songhana@nncpn.com">songhana@nncpn.com</a></nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <h1>덜 외우고,<br>더 오래 기억하는<br>자격증 공부</h1>
+        <p class="lede">나나컴퍼니는 공인중개사·주택관리사 수험생을 위한 암기법 학습 콘텐츠를 만듭니다. 콘텐츠 기획부터 제작, 배포까지 Claude 기반 자동화로 운영합니다.</p>
+        <a class="cta" href="mailto:songhana@nncpn.com">문의 메일 보내기</a>
+      </div>
+
+      <div class="card" aria-labelledby="quiz-q">
+        <span class="tag">오늘의 OX</span>
+        <p class="q" id="quiz-q">나나컴퍼니는 ‘하나’와 ‘빛나’, 두 자매가 만든 회사다.</p>
+        <div class="ox" role="group" aria-label="정답 선택">
+          <button type="button" data-a="o" aria-pressed="false">O</button>
+          <button type="button" data-a="x" aria-pressed="false">X</button>
+        </div>
+        <p class="answer" aria-live="polite">정답을 골라보세요.</p>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <h2>우리가 만드는 것</h2>
+      <p class="section-intro">시험 범위는 넓고 시간은 부족한 수험생이, 헷갈리는 개념을 오래 붙잡을 수 있도록 돕는 콘텐츠를 만듭니다.</p>
+      <div class="work">
+        <article>
+          <h3>암기법 전자책<small>노란스킬</small></h3>
+          <p>외워야 할 법령과 개념을 떠올리기 쉬운 단서로 바꿔 정리한 학습 전자책입니다.</p>
+        </article>
+        <article>
+          <h3>복습용 OX 퀴즈<small>웹 퀴즈</small></h3>
+          <p>시험일까지 하루 10문항씩 풀 수 있는 민법 기출 데일리 OX 퀴즈를 무료로 제공합니다.</p>
+        </article>
+        <article>
+          <h3>학습 콘텐츠 채널<small>블로그 · 인스타그램 · 유튜브 쇼츠</small></h3>
+          <p>수험 정보와 암기 팁을 여러 채널에 맞는 형식으로 꾸준히 발행합니다.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="claude">
+    <div class="wrap">
+      <div>
+        <h2>Claude로 만드는 방법</h2>
+        <p class="section-intro" style="margin-bottom:0">1인 회사가 여러 채널을 꾸준히 운영할 수 있는 건, 반복되는 제작 과정을 Claude 기반 자동화로 묶어두었기 때문입니다.</p>
+      </div>
+      <ul>
+        <li><b>원고 작성 자동화</b><span>Claude Code로 블로그 원고 작성과 예약 발행, 유튜브 쇼츠 예약 업로드를 파이프라인으로 운영합니다.</span></li>
+        <li><b>카드 이미지 제작</b><span>학습 내용을 HTML 카드로 구성하고 이미지로 변환해 인스타그램용 콘텐츠를 만듭니다.</span></li>
+        <li><b>퀴즈 · 학습 도구</b><span>공공데이터 기출문제와 전자책 내용으로 OX 문항과 해설을 만들고, 자동 채점되는 데일리 퀴즈 30회분을 Claude Code로 생성해 운영하고 있습니다.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="info">
+    <div class="wrap">
+      <h2>회사 정보</h2>
+      <dl>
+        <dt>상호</dt><dd>나나컴퍼니</dd>
+        <dt>대표</dt><dd>송하나</dd>
+        <dt>사업자등록번호</dt><dd>576-40-01235</dd>
+        <dt>주소</dt><dd>인천광역시 연수구 센트럴로 313, 씨동 6층 20호</dd>
+        <dt>설립</dt><dd>2024년 8월</dd>
+        <dt>브랜드</dt><dd>노란스킬</dd>
+        <dt>이메일</dt><dd><a href="mailto:songhana@nncpn.com">songhana@nncpn.com</a></dd>
+      </dl>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 나나컴퍼니</div>
+</footer>
+
+<script>
+  (function(){
+    var buttons = document.querySelectorAll('.ox button');
+    var answer = document.querySelector('.answer');
+    buttons.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        buttons.forEach(function(b){ b.setAttribute('aria-pressed','false'); });
+        btn.setAttribute('aria-pressed','true');
+        if(btn.dataset.a === 'o'){
+          answer.innerHTML = '<strong>정답, O!</strong> 하나와 빛나, 그래서 나나컴퍼니입니다.';
+        } else {
+          answer.innerHTML = '<strong>아쉽지만 O예요.</strong> 하나와 빛나, 그래서 나나컴퍼니입니다.';
+        }
+      });
+    });
+  })();
+</script>
+</body>
+</html>
