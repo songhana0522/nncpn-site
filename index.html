@@ -114,6 +114,16 @@
   .info dd{font-weight:600}
   .info dd a{text-decoration-color:var(--yellow);text-decoration-thickness:3px;text-underline-offset:4px}
 
+  .yt{border-top:2px solid var(--ink);display:grid;grid-template-columns:repeat(3,1fr);margin-bottom:32px}
+  .yt div{padding:24px 0}
+  .yt b{display:block;font-size:clamp(28px,3.4vw,40px);font-weight:800;letter-spacing:-0.03em}
+  .yt span{color:var(--ink-soft);font-size:15px}
+  .links{display:flex;flex-wrap:wrap;gap:12px}
+  .links a{border:2px solid var(--ink);border-radius:999px;padding:10px 18px;font-weight:700;text-decoration:none;font-size:15px}
+  .links a:hover{background:var(--yellow-soft)}
+  .en p{color:var(--ink-soft);max-width:40em;margin:0}
+  @media (max-width:480px){.yt{grid-template-columns:1fr}.yt div{padding:16px 0;border-bottom:1px solid var(--rule)}}
+
   footer{border-top:1px solid var(--rule);padding:28px 0;color:var(--ink-soft);font-size:14px}
 
   @media (max-width:860px){
@@ -189,6 +199,22 @@
     </div>
   </section>
 
+  <section>
+    <div class="wrap">
+      <h2>노란스킬 유튜브</h2>
+      <p class="section-intro">공인중개사·주택관리사 수험생을 위한 암기법 강의와 쇼츠를 꾸준히 올리고 있습니다.</p>
+      <div class="yt">
+        <div><b>530여 편</b><span>강의 영상</span></div>
+        <div><b>370여 편</b><span>쇼츠</span></div>
+        <div><b>3천여 명</b><span>구독자</span></div>
+      </div>
+      <div class="links">
+        <a href="https://www.youtube.com/@노란스킬" target="_blank" rel="noopener">유튜브 채널 보기</a>
+        <a href="https://litt.ly/yellowskill" target="_blank" rel="noopener">노란스킬 전체 채널</a>
+      </div>
+    </div>
+  </section>
+
   <section class="claude">
     <div class="wrap">
       <div>
@@ -200,6 +226,13 @@
         <li><b>카드 이미지 제작</b><span>학습 내용을 HTML 카드로 구성하고 이미지로 변환해 인스타그램용 콘텐츠를 만듭니다.</span></li>
         <li><b>퀴즈 · 학습 도구</b><span>공공데이터 기출문제와 전자책 내용으로 OX 문항과 해설을 만들고, 자동 채점되는 데일리 퀴즈 30회분을 Claude Code로 생성해 운영하고 있습니다.</span></li>
       </ul>
+    </div>
+  </section>
+
+  <section class="en">
+    <div class="wrap">
+      <h2>About Nana Company</h2>
+      <p>Nana Company (founded August 2024, Incheon, South Korea) runs Yellow Skill, a study brand for Korean real estate agent and housing manager exam candidates. Yellow Skill publishes mnemonic e-books, free daily O/X quizzes, and a YouTube channel with 530+ lecture videos and 370+ Shorts. As a one-person company, we use Claude Code to automate blog drafting and scheduled publishing, card-news images, Shorts uploads, and quiz generation from public exam data.</p>
     </div>
   </section>
 
